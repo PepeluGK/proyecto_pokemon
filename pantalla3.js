@@ -183,9 +183,9 @@ function updateStats() {
     rivalHealthBar.style.width = rivalHealthWidth + "%";
 }
 
-//ataque del jugador
+//ataque del jugador(si la defensa del rival es mayor que el ataque no hace daño directamente)
 function playerAttack() {
-    if (!(userPokemon.attack - rivalPokemon.defense) < 0) {
+    if (!((userPokemon.attack - rivalPokemon.defense) < 0)) {
         rivalPokemon.hp -= (userPokemon.attack - rivalPokemon.defense);
         if (rivalPokemon.hp < 0) rivalPokemon.hp = 0;
         updateStats();
@@ -219,7 +219,7 @@ function rivalTurn() {
 
 //ataque del rival
 function rivalAttack() {
-    if (!(rivalPokemon.attack - userPokemon.defense) < 0) {
+    if (!((rivalPokemon.attack - userPokemon.defense) < 0)) {
         userPokemon.hp -= (rivalPokemon.attack - userPokemon.defense);
         if (userPokemon.hp < 0) userPokemon.hp = 0;
         updateStats();
